@@ -1,0 +1,40 @@
+.card {
+  max-width: 500px;
+  margin: 5rem auto 2rem;
+  background: rgb(248,245,222);
+  background: linear-gradient(120deg, rgba(248,245,222,1) 0%, rgba(245,240,201,1) 100%);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
+  padding: 3rem 2rem 8rem;
+  text-align: center;
+  color: rgb(43, 43, 43);
+  border-radius: 10px;
+}
+
+h1 {
+  margin-top: 4rem;
+  font-size: 40px;
+
+}
+
+.card h2 {
+  font-size: 26px;
+}
+
+.card p {
+  font-size: 20px;
+}
+
+button {
+  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+  padding: 1.5rem;
+  border: 0;
+  cursor: pointer;
+  font-family: 'Kalam', cursive;
+  font-size: 20px;
+  background-color: rgba(106, 80, 251, 0.353);
+}
+
+button:hover {
+  background-color: rgba(106, 80, 251, 0.672);
+
+}

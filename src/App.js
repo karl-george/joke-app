@@ -1,36 +1,30 @@
 import { useState, useEffect } from 'react';
+import Joke from './components/Joke';
 import './App.css';
 
 function App() {
-  const [jokes, setJokes] = useState();
-  const [newJoke, setNewJoke] = useState(false);
+  const [joke, setJoke] = useState();
+
+  async function getJoke() {
+    const res = await fetch(
+      'https://v2.jokeapi.dev/joke/Programming?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=twopart'
+    );
+    const data = await res.json();
+    setJoke(data);
+  }
 
   useEffect(() => {
-    async function getJokes() {
-      const res = await fetch(
-        'https://v2.jokeapi.dev/joke/Programming?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=twopart'
-      );
-      const data = await res.json();
-      setJokes(data);
-    }
-
-    getJokes();
-  }, [newJoke]);
+    getJoke();
+  }, []);
 
   const getNewJoke = () => {
-    setNewJoke((prev) => !prev);
+    getJoke();
   };
 
   return (
     <div className='App'>
-      {jokes ? (
-        <div>
-          <h2>{jokes.setup}</h2>
-          <h2>{jokes.delivery}</h2>
-        </div>
-      ) : (
-        <p>Loading</p>
-      )}
+      <h1>Jokes App</h1>
+      {joke ? <Joke setup={joke.setup} delivery={joke.delivery} /> : `Loading`}
       <button onClick={getNewJoke}>Get a new joke</button>
     </div>
   );
